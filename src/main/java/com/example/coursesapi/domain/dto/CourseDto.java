@@ -2,25 +2,34 @@ package com.example.coursesapi.domain.dto;
 
 import com.example.coursesapi.domain.entities.Course;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
 @Data
-
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CourseDto {
 
     private Long id;
 
-    @NotNull( "Name is required")
+    @NotNull( message =  "Name is required")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
-    @NotNull("Category is required")
+
+    @NotNull(message = "Category is required")
+    @Size(min = 2, max = 50, message = "Category must be between 2 and 50 characters")
     private String category;
+
     private boolean active;
+
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
+
 
 
     public CourseDto(Course savedCourse) {

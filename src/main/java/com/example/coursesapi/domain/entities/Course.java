@@ -10,6 +10,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "course")
 public class Course {
 
     @Id
