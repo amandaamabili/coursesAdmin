@@ -4,6 +4,10 @@ import com.example.coursesapi.domain.dto.CourseDto;
 
 import java.util.List;
 
+/**
+ * Course Service Interface
+ *
+ */
 public interface CourseService {
 
     CourseDto createCourse(CourseDto course);
