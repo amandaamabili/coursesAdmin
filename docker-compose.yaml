@@ -1,30 +1,23 @@
-version: '3.8'
+version: '3.9'
 
 services:
-#  app:
-#    image: openjdk:17-jdk-slim
-#    container_name: courses-api
-#    restart: always
-##    build:
-##      context: .
-##      dockerfile: Dockerfile
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - app-db-network
-#    environment:
-##      // - spring.data.mongodb.host=mongo-user-db
-##      - spring.data.mongodb.port=27018
-##      - spring.data.mongodb.database=e-commerce
-##      - server.port=8001
-#      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coursesdb?useSSL=false&serverTimezone=UTC
-#      SPRING_DATASOURCE_USERNAME: root
-#      SPRING_DATASOURCE_PASSWORD: root
-#      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-#      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
-#    depends_on:
-#      - db
-
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-db-network
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coursesdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
+    depends_on:
+      - db
   db:
     image: mysql:8
     container_name: mysql-db
@@ -36,6 +29,8 @@ services:
       - "3306:3306"
     networks:
       - app-db-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
 
 networks:
   app-db-network:
