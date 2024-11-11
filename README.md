@@ -4,10 +4,17 @@ Courses API is a Spring Boot application that provides a RESTful API for managin
 
 ## Prerequisites
 
-- Java 21
 - Docker
 - Docker Compose
-- Gradle
+
+## Technologies Used
+
+- **Java 21**: The programming language used for the application.
+- **Spring Boot**: Framework for building the RESTful API.
+- **Gradle**: Build tool for managing dependencies and building the project.
+- **Docker**: Containerization platform to run the application in isolated environments.
+- **Docker Compose**: Tool for defining and running multi-container Docker applications.
+- **MySQL**: Database used for storing course data.
 
 ## Getting Started
 
