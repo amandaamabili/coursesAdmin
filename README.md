@@ -19,10 +19,11 @@ Courses API is a Spring Boot application that provides a RESTful API for managin
 ## Getting Started
 
 ### Clone the repository
+`https://github.com/amandaamabili/coursesAdmin.git `
 
 
 
-
+##Run the aplication 
 
 Run the application with Docker
 Build and run the Docker containers using Docker Compose.
